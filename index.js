@@ -36,16 +36,19 @@ app.get('/practise', function (req, res) {
 });
 
 app.post('/create-contact', function (req, res) {
-    contactList.push({
-        name: req.body.name,
-        phone: req.body.phone
-    });
+    // contactList.push({
+    //     name: req.body.name,
+    //     phone: req.body.phone
+    // });
 
+    contactList.push(req.body);
     // console.log(req.body);
     // console.log(req.body.name);
     // console.log(req.body.phone);
 
-    return res.redirect('/');
+    //    return res.redirect('/');
+    return res.redirect('back');
+
 })
 
 
