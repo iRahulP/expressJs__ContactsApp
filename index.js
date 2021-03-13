@@ -10,7 +10,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.get('/', function (req, res) {
     // console.log(__dirname);
     // res.send('<h1>It\'s Running</h1>');
-    return res.render('home');
+    return res.render('home', { title: "Welcome" });
 });
 
 
