@@ -4,11 +4,10 @@ const port = 8000;
 const app = express();
 
 
-
-
-
-
-
+app.get('/', function (req, res){
+    console.log(req);
+    res.send('<h1>It\'s Running</h1>');
+});
 
 
 
