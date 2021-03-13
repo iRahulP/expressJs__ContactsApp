@@ -8,3 +8,7 @@ body {
     margin-top: 25px;
     color: gray;
 }
+
+#new-contact-form {
+    align-items: center;
+}
