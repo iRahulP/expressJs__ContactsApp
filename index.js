@@ -3,11 +3,21 @@ const express = require('express');
 const port = 8000;
 
 const app = express();
-
-app.use(express.urlencoded({ extended: false }));
-
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
+app.use(express.urlencoded({ extended: false }));
+
+// middleware 1
+app.use(function (req, res, next) {
+    console.log("Middleware 1");
+    next();
+});
+
+//middleware 2
+app.use(function (req, res, next) {
+    console.log("middleware 2");
+    next();
+});
 
 var contactList = [
     {
@@ -18,7 +28,7 @@ var contactList = [
         name: 'Tony',
         phone: '00000000'
     }
-]
+];
 
 app.get('/', function (req, res) {
     // console.log(__dirname);
@@ -36,18 +46,18 @@ app.get('/practise', function (req, res) {
 });
 
 app.post('/create-contact', function (req, res) {
-    // contactList.push({
-    //     name: req.body.name,
-    //     phone: req.body.phone
-    // });
+    contactList.push({
+        name: req.body.name,
+        phone: req.body.phone
+    });
 
-    contactList.push(req.body);
-    // console.log(req.body);
-    // console.log(req.body.name);
-    // console.log(req.body.phone);
+    //    contactList.push(req.body);
+    console.log(req.body);
+    console.log(req.body.name);
+    console.log(req.body.phone);
 
-    //    return res.redirect('/');
-    return res.redirect('back');
+    return res.redirect('/');
+    // return res.redirect('back');
 
 })
 
