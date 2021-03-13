@@ -4,6 +4,8 @@ const port = 8000;
 
 const app = express();
 
+app.use(express.urlencoded({ extended: false }));
+
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
@@ -34,8 +36,16 @@ app.get('/practise', function (req, res) {
 });
 
 app.post('/create-contact', function (req, res) {
-    console.log(req);
-    return res.redirect('/practise');
+    contactList.push({
+        name: req.body.name,
+        phone: req.body.phone
+    });
+
+    // console.log(req.body);
+    // console.log(req.body.name);
+    // console.log(req.body.phone);
+
+    return res.redirect('/');
 })
 
 
