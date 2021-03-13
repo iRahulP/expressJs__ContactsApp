@@ -1,3 +1,10 @@
-body{
+body {
+    margin: 0px;
+    font-family: sans-serif;
+}
+
+#CL {
     text-align: center;
+    margin-top: 25px;
+    color: gray;
 }
