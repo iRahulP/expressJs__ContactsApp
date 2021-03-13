@@ -10,7 +10,15 @@ app.set('views', path.join(__dirname, 'views'));
 app.get('/', function (req, res) {
     // console.log(__dirname);
     // res.send('<h1>It\'s Running</h1>');
-    return res.render('home', { title: "Welcome" });
+    return res.render('home', {
+        title: "Contacts"
+    });
+});
+
+app.get('/practise', function (req, res) {
+    return res.render('practise', {
+        title: "play ejs"
+    });
 });
 
 

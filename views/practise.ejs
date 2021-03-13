@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>
+        <%= title%>
+    </title>
+</head>
+<body>
+    <h1>Playground</h1>
+
+    <ul>
+        <% for (let i = 1; i < 6 ; i++ ) { %>
+            <li>
+                <%= i %>
+            </li>
+        <% } %>
+
+        <% if (true){ %>
+            <p>It's true</p>
+        <% }else { %>
+            <p>It's false</p>
+            <% } %>
+    </ul>
+</body>
+</html>
