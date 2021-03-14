@@ -43,9 +43,16 @@ var contactList = [
 app.get('/', function (req, res) {
     // console.log(__dirname);
     // res.send('<h1>It\'s Running</h1>');
-    return res.render('home', {
-        title: "Contacts",
-        contact_list: contactList
+    
+    Contact.find({}, function(err, contacts){
+        if(err){
+            console.log("Error in  fetching contacts from db");
+            return;
+        }
+        return res.render('home', {
+            title: "Contacts",
+            contact_list: contacts
+        });
     });
 });
 
