@@ -3,6 +3,7 @@ const path = require('path');
 const port = 8000;
 
 const db = require('./config/mongoose');
+const Contact = require('./models/contact');
 
 const app = express();
 app.set('view engine', 'ejs');
