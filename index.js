@@ -100,16 +100,26 @@ app.listen(port, function (err) {
     console.log("Express running on : ", port);
 });
 
-app.get('/delete-contact/:phone', function (req, res) {
-    console.log(req.params);
-    let phone = req.params.phone;
+app.get('/delete-contact/:id', function (req, res) {
+    //console.log(req.params);
+    //let phone = req.params.phone;
+    //get is from url
+    let id = req.params.id;
 
-    let contactIndex = contactList.findIndex(contact => contact.phone == phone);
-    console.log(contactIndex);
+    // let contactIndex = contactList.findIndex(contact => contact.phone == phone);
+    // console.log(contactIndex);
 
-    if (contactIndex != -1) {
-        contactList.splice(contactIndex, 1);
-    }
-    return res.redirect('back');
+    // if (contactIndex != -1) {
+    //     contactList.splice(contactIndex, 1);
+    // }
+
+    //find the contact in the db using id and delete
+    Contact.findByIdAndDelete(id, function (err){
+        if(err){
+            console.log("Error deleting Contact");
+            return;
+        }
+        return res.redirect('/');
+    })
 });
 
