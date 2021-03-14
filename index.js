@@ -57,18 +57,31 @@ app.get('/practise', function (req, res) {
 });
 
 app.post('/create-contact', function (req, res) {
-    console.log(req.myName);
-    contactList.push({
-        name: req.body.name,
-        phone: req.body.phone
-    });
+    //console.log(req.myName);
+    // contactList.push({
+    //     name: req.body.name,
+    //     phone: req.body.phone
+    // });
 
     //    contactList.push(req.body);
     // console.log(req.body);
     // console.log(req.body.name);
     // console.log(req.body.phone);
 
-    return res.redirect('/');
+    //storing to mongo db
+    Contact.create({
+        name: req.body.name,
+        phone: req.body.phone
+    }, function (err, newContact) {
+        if (err) {
+            console.log("Error in creating a contact!");
+            return;
+        }
+        console.log("********", newContact);
+        return res.redirect('back');
+    })
+
+    //    return res.redirect('/');
     // return res.redirect('back');
 })
 
